@@ -20,7 +20,6 @@ public class InternalEncoder extends MessageToByteEncoder<InternalData> {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, InternalData internalData, ByteBuf byteBuf) throws Exception {
         byte[] data = this.internalProtocol.serializeInternalData(internalData);
-        //log.info("Send internal data: {}", ByteUtils.toHexString(data));
         byteBuf.writeBytes(data);
     }
 }

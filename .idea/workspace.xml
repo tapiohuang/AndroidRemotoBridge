@@ -4,45 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88ff0d3f-dc50-419f-80a6-887825e61291" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-client/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/ClientBridge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/ClientBridgeBoostrap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/ClientInternalHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/HeartBeatClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/IClientBridge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/IClientBridgeBoostrap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/TestRpcServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-client/src/test/java/org/xw0code/android_remote_beidge/client/ClientBridgeBoostrapTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/BridgeInvokeResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/BridgeInvoker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/ByteUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/DefaultBridgeProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/DefaultInternalProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/IBridgeProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/IInternalProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalEncoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/ProtostuffUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/RuntimeContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/TestRpcService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/BridgeInvokerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/CglibServerBridgeFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/IServerBridge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/IServerBridgeBootstrap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerBridge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerBridgeBoostrap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerBridgeMethodInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerInternalHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bridge-server/src/test/java/org/xw0code/android_remote_beidge/server/ServerBridgeBoostrapTest.java" afterDir="false" />
+    <list default="true" id="88ff0d3f-dc50-419f-80a6-887825e61291" name="变更" comment="本地环境中TPS达到700+">
+      <change afterPath="$PROJECT_DIR$/.idea/markdown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalEncoder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +43,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -90,6 +56,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -167,12 +134,42 @@
       <option name="presentableId" value="Default" />
       <updated>1676330831184</updated>
       <workItem from="1676330832117" duration="13329000" />
-      <workItem from="1676344298215" duration="8403000" />
+      <workItem from="1676344298215" duration="10484000" />
     </task>
+    <task id="LOCAL-00001" summary="本地环境中TPS达到700+">
+      <created>1676362256236</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676362256236</updated>
+    </task>
+    <task id="LOCAL-00002" summary="本地环境中TPS达到700+">
+      <created>1676363943673</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1676363943673</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="本地环境中TPS达到700+" />
+    <option name="LAST_COMMIT_MESSAGE" value="本地环境中TPS达到700+" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
