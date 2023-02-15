@@ -45,4 +45,30 @@ java代码如下：
 |-------|-------|-------|----------|-------|
 | total | id    | type  | data_len | data  |
 > 
+### 4.自定义ReqHandler
+实现RegHandler接口
+```Java
+public interface ReqHandler {
+    InternalData handle(ChannelHandlerContext channelHandlerContext, InternalData internalData, HandlerAttributes handlerAttributes);
 
+    int getReqType();
+}
+```
+### 5.自定义CmdHandler
+实现CmdHandler接口
+```Java
+public interface CmdHandler {
+    void handle(ChannelHandlerContext channelHandlerContext, byte[] data, HandlerAttributes handlerAttributes);
+
+    int getCmdType();
+
+}
+```
+### 6.注册自定义的CmdHandler,ReqHandler
+```Java
+        serverBridgeBoostrap.addCmdHandler(new RegisterSupportBridge())//server
+        .addCmdHandler(new ClientReadyHandler());
+```
+```Java
+       clientBridgeBoostrap.addReqHandler(new SayHelloHandler());//client
+```
