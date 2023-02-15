@@ -1,10 +1,9 @@
 package org.xw0code.android_remote_beidge.server;
 
 import io.netty.channel.Channel;
-import org.xw0code.android_remote_beidge.common.BridgeInvokeResult;
-import org.xw0code.android_remote_beidge.common.BridgeInvoker;
-import org.xw0code.android_remote_beidge.common.InternalData;
-import org.xw0code.android_remote_beidge.common.RuntimeContainer;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import org.xw0code.android_remote_beidge.common.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,13 +11,15 @@ import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
 
-public class Client {
+public class Client extends ReqResInternalTunnel {
     private final int clientId;
     private final Channel channel;
     private final HashSet<Class<?>> supportedBridgeSet = new HashSet<>();
     private final HashMap<Long, CompletableFuture<Object>> invokeFutureMap = new HashMap<>();
 
+
     public Client(Channel channel) {
+        super(channel);
         this.channel = channel;
         this.clientId = channel.hashCode();
     }
@@ -67,12 +68,16 @@ public class Client {
         CompletableFuture<Object> future = new CompletableFuture<>();
         invokeFutureMap.put(bridgeInvoker.getInvokeId(), future);
         BridgeInvokerManager.getInstance().addInvoker(bridgeInvoker, this);
-        try {
-            channel.writeAndFlush(wrapBridgeInvoker(bridgeInvoker)).sync();
-        } catch (InterruptedException e) {
-            future.completeExceptionally(e);
-        }
+        channel.writeAndFlush(wrapBridgeInvoker(bridgeInvoker)).addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture channelFuture) throws Exception {
+                if (!channelFuture.isSuccess()) {
+                    future.completeExceptionally(channelFuture.cause());
+                }
+            }
+        });
         future.whenComplete((o, throwable) -> {
+            LogUtils.info("Invoke complete: {}", bridgeInvoker);
             invokeFutureMap.remove(bridgeInvoker.getInvokeId());
             BridgeInvokerManager.getInstance().removeInvoker(bridgeInvoker);
         });
@@ -84,7 +89,7 @@ public class Client {
     }
 
     private InternalData wrapBridgeInvoker(BridgeInvoker bridgeInvoker) {
-        InternalData internalData = new InternalData(2L,
+        InternalData internalData = new InternalData(System.currentTimeMillis(),
                 InternalData.INVOKE,
                 RuntimeContainer.BRIDGE_PROTOCOL.serializeInvoke(bridgeInvoker));
         return internalData;

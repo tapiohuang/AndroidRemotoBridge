@@ -1,5 +1,6 @@
 package org.xw0code.android_remote_beidge.client;
 
+import io.netty.channel.Channel;
 import org.xw0code.android_remote_beidge.common.BridgeInvokeResult;
 import org.xw0code.android_remote_beidge.common.BridgeInvoker;
 
@@ -23,9 +24,6 @@ public class ClientBridge implements IClientBridge {
             }
             Class<?> bridgeImplClass = bridgeImpl.getClass();
             Method method = bridgeImplClass.getMethod(methodName, parameterTypes);
-            if (method == null) {
-                throw new RuntimeException("method is null");
-            }
             Object result = method.invoke(bridgeImpl, args);
             return new BridgeInvokeResult(bridgeInvoker.getInvokeId(), result);
         } catch (Throwable throwable) {
@@ -42,4 +40,5 @@ public class ClientBridge implements IClientBridge {
     public <T> void registerBridge(Class<T> bridgeClazz, T bridgeImpl) {
         bridgeImplMap.put(bridgeClazz.getName(), bridgeImpl);
     }
+
 }

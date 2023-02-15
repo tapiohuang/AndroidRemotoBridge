@@ -1,7 +1,9 @@
 package org.xw0code.android_remote_beidge.client;
 
+import org.xw0code.android_remote_beidge.common.CmdHandler;
 import org.xw0code.android_remote_beidge.common.IBridgeProtocol;
 import org.xw0code.android_remote_beidge.common.IInternalProtocol;
+import org.xw0code.android_remote_beidge.common.ReqHandler;
 
 public interface IClientBridgeBoostrap {
     IClientBridgeBoostrap server(String ip, int port);
@@ -12,7 +14,10 @@ public interface IClientBridgeBoostrap {
 
     IClientBridgeBoostrap internalProtocol(IInternalProtocol internalProtocol);
 
-    void start();
+    Server start();
+
+    IClientBridgeBoostrap debug(boolean debug);
+
 
     void close();
 }

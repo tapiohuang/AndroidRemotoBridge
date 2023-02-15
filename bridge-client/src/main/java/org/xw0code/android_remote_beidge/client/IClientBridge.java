@@ -10,4 +10,5 @@ public interface IClientBridge {
     String[] getSupportedBridgeClassName();
 
     <T> void registerBridge(Class<T> bridgeClazz, T bridgeImpl);
+
 }

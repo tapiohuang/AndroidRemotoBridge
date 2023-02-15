@@ -5,7 +5,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class InternalEncoder extends MessageToByteEncoder<InternalData> {
     private IInternalProtocol internalProtocol;
 

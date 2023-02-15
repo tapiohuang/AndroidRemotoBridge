@@ -1,0 +1,15 @@
+<assembly>
+    <id>assembly</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>${basedir}</directory>
+            <excludes>
+                <exclude>META-INFO/**</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+
+</assembly>

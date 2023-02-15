@@ -5,9 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88ff0d3f-dc50-419f-80a6-887825e61291" name="变更" comment="本地环境中TPS达到700+">
-      <change afterPath="$PROJECT_DIR$/.idea/markdown.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-client/src/assembly.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/SayHelloHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/ClientSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/CmdHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/CommonBoostrap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/HandlerAttributes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/HandlerAttributesSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/IdGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalCmdHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalReqCompletableFuture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalReqHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/LogUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/ReqHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/ReqResInternalTunnel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ClientReadyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/RegisterSupportBridge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerIdleHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerInvokeHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/ClientBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/ClientBridge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/ClientBridgeBoostrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/ClientBridgeBoostrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/ClientInternalHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/ClientInvokeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/HeartBeatClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/HeartBeatClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/IClientBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/IClientBridge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/IClientBridgeBoostrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/IClientBridgeBoostrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-client/src/main/java/org/xw0code/android_remote_beidge/client/TestRpcServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-client/src/test/java/org/xw0code/android_remote_beidge/client/TestRpcServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-client/src/test/java/org/xw0code/android_remote_beidge/client/ClientBridgeBoostrapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-client/src/test/java/org/xw0code/android_remote_beidge/client/ClientBridgeBoostrapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/ByteUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/ByteUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/DefaultBridgeProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/DefaultBridgeProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/InternalEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/RuntimeContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/RuntimeContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/TestRpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-common/src/main/java/org/xw0code/android_remote_beidge/common/TestRpcService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/CglibServerBridgeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/CglibServerBridgeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/IServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/IServerBridge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/IServerBridgeBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/IServerBridgeBootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerBridge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerBridgeBoostrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerBridgeBoostrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerBridgeMethodInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerBridgeMethodInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/src/main/java/org/xw0code/android_remote_beidge/server/ServerInternalHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge-server/src/test/java/org/xw0code/android_remote_beidge/server/ServerBridgeBoostrapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/bridge-server/src/test/java/org/xw0code/android_remote_beidge/server/ServerBridgeBoostrapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +60,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -33,6 +76,9 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
   <component name="ProjectId" id="2LhkiWwxn3yTXq22MxTvAVl9i3P" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -41,31 +87,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "D:/JavaProjects/Xianyu Run",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JavaProjects/Xianyu Run&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.33793104&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.xw0code.android_remote_beidge.common" />
+      <recent name="org.xw0code.android_remote_beidge.server" />
+      <recent name="org.xw0code.android_remote_beidge.client" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="org.xw0code.android_remote_beidge.client" />
@@ -119,9 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.ServerBridgeBoostrapTest" />
         <item itemvalue="应用程序.ClientBridgeBoostrapTest" />
+        <item itemvalue="应用程序.ServerBridgeBoostrapTest" />
         <item itemvalue="JUnit.bridge-server中的org.xw0code.android_remote_beidge.server" />
+        <item itemvalue="应用程序.ClientBridgeBoostrapTest" />
+        <item itemvalue="应用程序.ServerBridgeBoostrapTest" />
       </list>
     </recent_temporary>
   </component>
@@ -135,6 +188,8 @@
       <updated>1676330831184</updated>
       <workItem from="1676330832117" duration="13329000" />
       <workItem from="1676344298215" duration="10484000" />
+      <workItem from="1676364312226" duration="25387000" />
+      <workItem from="1676444532116" duration="403000" />
     </task>
     <task id="LOCAL-00001" summary="本地环境中TPS达到700+">
       <created>1676362256236</created>
@@ -150,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676363943673</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="本地环境中TPS达到700+">
+      <created>1676364324809</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1676364324809</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -11,17 +11,13 @@ class ServerBridgeBoostrapTest {
 
     public static void main(String[] args) {
         ServerBridgeBoostrap serverBridgeBoostrap = new ServerBridgeBoostrap();
-        IServerBridge serverBridge = serverBridgeBoostrap.bridgeProtocol(new DefaultBridgeProtocol())
+        serverBridgeBoostrap.addCmdHandler(new RegisterSupportBridge())
+                .addCmdHandler(new ClientReadyHandler());
+        IServerBridge serverBridge = serverBridgeBoostrap
+                .bridgeProtocol(new DefaultBridgeProtocol())
                 .internalProtocol(new DefaultInternalProtocol())
                 .registerBridge(TestRpcService.class)
+                .debug(true)
                 .start();
-        Executors.newScheduledThreadPool(4).schedule(() -> {
-            long start = System.currentTimeMillis();
-            for (int i = 0; i < 1000; i++) {
-                TestRpcService testRpcService = serverBridge.getBridge(TestRpcService.class);
-                testRpcService.encryptHttpSign("httpSign" + i);
-            }
-            log.info("cost:{}", System.currentTimeMillis() - start);
-        }, 20, TimeUnit.SECONDS);
     }
 }

@@ -1,7 +1,6 @@
 package org.xw0code.android_remote_beidge.server;
 
-import org.xw0code.android_remote_beidge.common.IBridgeProtocol;
-import org.xw0code.android_remote_beidge.common.IInternalProtocol;
+import org.xw0code.android_remote_beidge.common.*;
 
 public interface IServerBridgeBootstrap {
 
@@ -15,4 +14,7 @@ public interface IServerBridgeBootstrap {
 
     void close();
     IServerBridge start();
+
+    IServerBridgeBootstrap debug(boolean debug);
+
 }

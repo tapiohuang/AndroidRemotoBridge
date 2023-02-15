@@ -2,15 +2,13 @@ package org.xw0code.android_remote_beidge.client;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import org.xw0code.android_remote_beidge.common.BridgeInvokeResult;
-import org.xw0code.android_remote_beidge.common.BridgeInvoker;
-import org.xw0code.android_remote_beidge.common.InternalData;
-import org.xw0code.android_remote_beidge.common.RuntimeContainer;
+import org.xw0code.android_remote_beidge.common.*;
 
-public class ClientInternalHandler extends SimpleChannelInboundHandler<InternalData> {
+
+public class ClientInvokeHandler extends SimpleChannelInboundHandler<InternalData> {
     private ClientBridge clientBridge;
 
-    public ClientInternalHandler(ClientBridge clientBridge) {
+    public ClientInvokeHandler(ClientBridge clientBridge) {
         this.clientBridge = clientBridge;
     }
 
@@ -22,7 +20,8 @@ public class ClientInternalHandler extends SimpleChannelInboundHandler<InternalD
                 channelHandlerContext.writeAndFlush(toInvoke(internalData));
                 return;
             default:
-                throw new RuntimeException("Unknown internal data type: " + internalData.getType());
+                channelHandlerContext.fireChannelRead(internalData);
+                return;
         }
     }
 
@@ -32,4 +31,6 @@ public class ClientInternalHandler extends SimpleChannelInboundHandler<InternalD
         byte[] data = RuntimeContainer.BRIDGE_PROTOCOL.serializeResult(bridgeInvokeResult);
         return new InternalData(internalData.getId(), InternalData.INVOKE_RESULT, data);
     }
+
+
 }

@@ -3,7 +3,6 @@ package org.xw0code.android_remote_beidge.common;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class DefaultBridgeProtocol implements IBridgeProtocol {
 
     @Override

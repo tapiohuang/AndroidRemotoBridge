@@ -253,5 +253,10 @@ public final class ByteUtils {
     }
 
 
+    public static byte[] subBytes(byte[] payload, int pos, int length) {
+        byte[] result = new byte[length];
+        System.arraycopy(payload, pos, result, 0, length);
+        return result;
+    }
 }
 

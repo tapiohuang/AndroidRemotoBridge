@@ -7,24 +7,27 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import lombok.extern.slf4j.Slf4j;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.xw0code.android_remote_beidge.common.*;
 
+import java.util.concurrent.ThreadFactory;
 
-@Slf4j
-public class ServerBridgeBoostrap implements IServerBridgeBootstrap {
+
+public class ServerBridgeBoostrap extends CommonBoostrap
+        implements IServerBridgeBootstrap {
+    private final ServerBridge serverBridge = new ServerBridge();
     private int port = 23333;
     private IBridgeProtocol bridgeProtocol;
     private IInternalProtocol internalProtocol;
-
     private ChannelFuture serverChannelFuture;
-    private final ServerBridge serverBridge = new ServerBridge();
+
 
     @Override
     public IServerBridgeBootstrap port(int port) {
         this.port = port;
         return this;
     }
+
 
     @Override
     public IServerBridgeBootstrap bridgeProtocol(IBridgeProtocol bridgeProtocol) {
@@ -59,8 +62,23 @@ public class ServerBridgeBoostrap implements IServerBridgeBootstrap {
             throw new RuntimeException("bridgeProtocol or internalProtocol is null");
         }
         //start netty server
-        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1, new ThreadFactory() {
+            int i = 0;
+
+            @Override
+            public synchronized Thread newThread(Runnable r) {
+                return new Thread(r, "boss-thread" + i++);
+            }
+
+        });
+        EventLoopGroup workerGroup = new NioEventLoopGroup(new ThreadFactory() {
+            int i = 0;
+
+            @Override
+            public synchronized Thread newThread(Runnable r) {
+                return new Thread(r, "worker-thread" + i++);
+            }
+        });
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
@@ -69,20 +87,38 @@ public class ServerBridgeBoostrap implements IServerBridgeBootstrap {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            log.info("new client connected");
+                            LogUtils.info("new client connected");
+                            Client client = new Client(ch);
                             ChannelPipeline p = ch.pipeline();
-                            //p.addLast(new LoggingHandler(LogLevel.INFO));
+                            if (RuntimeContainer.DEBUG) {
+                                p.addLast(new LoggingHandler(LogLevel.INFO));
+                            }
                             p.addLast("encoder", new InternalEncoder(internalProtocol));
                             p.addLast("decoder", new InternalDecoder(internalProtocol));
-                            p.addLast(new ServerInternalHandler(serverBridge));
-                            serverBridge.registerClient(new Client(ch));
+                            p.addLast(new ServerInvokeHandler(serverBridge));
+                            p.addLast(new IdleStateHandler(0, 0, 30));
+                            InternalCmdHandler internalCmdHandler = new InternalCmdHandler(cmdHandlers);
+                            internalCmdHandler.addAttribute("client", client);
+                            p.addLast(internalCmdHandler);
+                            InternalReqHandler internalReqHandler = new InternalReqHandler(reqHandlers);
+                            internalReqHandler.addAttribute("client",client);
+                            p.addLast(internalReqHandler);
+                            p.addLast(new ServerIdleHandler(client));
+                            serverBridge.registerClient(client);
                         }
                     });
             this.serverChannelFuture = b.bind(port).sync();
-            log.info("server started at port {}", port);
+            LogUtils.info("server started at port {}", port);
             return this.serverBridge;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public IServerBridgeBootstrap debug(boolean debug) {
+        RuntimeContainer.DEBUG = debug;
+        return this;
+    }
+
 }
