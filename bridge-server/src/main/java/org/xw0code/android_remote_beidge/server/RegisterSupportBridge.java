@@ -14,8 +14,8 @@ public class RegisterSupportBridge implements CmdHandler {
         ) {
             try {
                 Class<?> supportBridgeClass = Class.forName(supportBridgeClassName);
+                SupportBridgeClientManagerContainer.getInstance().get(supportBridgeClass).registerClient(client);
                 LogUtils.info("Client {} support bridge: {}", client, supportBridgeClass);
-                client.addSupportedBridge(supportBridgeClass);
             } catch (ClassNotFoundException e) {
                 LogUtils.error("Class not found: {}", supportBridgeClassName);
             }

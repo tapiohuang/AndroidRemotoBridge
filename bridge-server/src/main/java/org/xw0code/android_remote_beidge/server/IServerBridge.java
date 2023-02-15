@@ -14,5 +14,4 @@ public interface IServerBridge {
 
     void unregisterClient(Client client);
 
-    Client getClient(Channel channel);
 }

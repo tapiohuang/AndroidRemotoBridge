@@ -5,10 +5,10 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import org.xw0code.android_remote_beidge.common.*;
 
 public class ServerInvokeHandler extends SimpleChannelInboundHandler<InternalData> {
-    private ServerBridge serverBridge;
+    private Client client;
 
-    public ServerInvokeHandler(ServerBridge serverBridge) {
-        this.serverBridge = serverBridge;
+    public ServerInvokeHandler(Client client) {
+        this.client = client;
     }
 
     @Override
@@ -23,7 +23,6 @@ public class ServerInvokeHandler extends SimpleChannelInboundHandler<InternalDat
     private void onInvokeResult(ChannelHandlerContext channelHandlerContext, InternalData internalData) {
         IBridgeProtocol bridgeProtocol = RuntimeContainer.BRIDGE_PROTOCOL;
         BridgeInvokeResult bridgeInvokeResult = bridgeProtocol.deserializeResult(internalData.getData());
-        Client client = this.serverBridge.getClient(channelHandlerContext.channel());
         client.completeInvoke(bridgeInvokeResult);
     }
 }

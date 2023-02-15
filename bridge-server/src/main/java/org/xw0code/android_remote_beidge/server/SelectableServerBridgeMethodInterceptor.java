@@ -1,6 +1,5 @@
 package org.xw0code.android_remote_beidge.server;
 
-import lombok.extern.slf4j.Slf4j;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 import org.xw0code.android_remote_beidge.common.BridgeInvoker;
@@ -12,19 +11,18 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 
-public class ServerBridgeMethodInterceptor implements MethodInterceptor {
-    private final Client client;
+public class SelectableServerBridgeMethodInterceptor implements MethodInterceptor {
+    private final SupportBridgeClientManager supportBridgeClientManager;
 
     private final int timeout;
 
     private final TimeUnit timeUnit;
 
-    public ServerBridgeMethodInterceptor(Client client, int timeout, TimeUnit timeUnit) {
-        this.client = client;
+    public SelectableServerBridgeMethodInterceptor(SupportBridgeClientManager supportBridgeClientManager, int timeout, TimeUnit timeUnit) {
+        this.supportBridgeClientManager = supportBridgeClientManager;
         this.timeUnit = timeUnit;
         this.timeout = timeout;
     }
-
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
@@ -35,6 +33,10 @@ public class ServerBridgeMethodInterceptor implements MethodInterceptor {
                 method.getParameterTypes(),
                 objects, IdGenerator.nextId()
         );
+        Client client = supportBridgeClientManager.selectClient(method);
+        if (client == null) {
+            throw new RuntimeException("no client available");
+        }
         CompletableFuture<Object> future = client.send(bridgeInvoker);
         try {
             return future.get(timeout, timeUnit);

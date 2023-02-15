@@ -14,7 +14,6 @@ import java.util.concurrent.CompletableFuture;
 public class Client extends ReqResInternalTunnel {
     private final int clientId;
     private final Channel channel;
-    private final HashSet<Class<?>> supportedBridgeSet = new HashSet<>();
     private final HashMap<Long, CompletableFuture<Object>> invokeFutureMap = new HashMap<>();
 
 
@@ -55,19 +54,19 @@ public class Client extends ReqResInternalTunnel {
         }
     }
 
-    public void addSupportedBridge(Class<?> bridgeClass) {
-        supportedBridgeSet.add(bridgeClass);
-    }
-
-    public boolean isSupportedBridge(Class<?> bridgeClass) {
-        //return true;
-        return supportedBridgeSet.contains(bridgeClass);
-    }
-
     public CompletableFuture<Object> send(BridgeInvoker bridgeInvoker) {
         CompletableFuture<Object> future = new CompletableFuture<>();
         invokeFutureMap.put(bridgeInvoker.getInvokeId(), future);
         BridgeInvokerManager.getInstance().addInvoker(bridgeInvoker, this);
+        future.whenComplete((o, throwable) -> {
+            LogUtils.info("Invoke complete: {}", bridgeInvoker);
+            invokeFutureMap.remove(bridgeInvoker.getInvokeId());
+            BridgeInvokerManager.getInstance().removeInvoker(bridgeInvoker);
+        });
+        if (!channel.isActive()) {
+            future.completeExceptionally(new RuntimeException("channel is not active"));
+            return future;
+        }
         channel.writeAndFlush(wrapBridgeInvoker(bridgeInvoker)).addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture channelFuture) throws Exception {
@@ -76,17 +75,9 @@ public class Client extends ReqResInternalTunnel {
                 }
             }
         });
-        future.whenComplete((o, throwable) -> {
-            LogUtils.info("Invoke complete: {}", bridgeInvoker);
-            invokeFutureMap.remove(bridgeInvoker.getInvokeId());
-            BridgeInvokerManager.getInstance().removeInvoker(bridgeInvoker);
-        });
         return future;
     }
 
-    public HashSet<Class<?>> getSupportedBridgeSet() {
-        return supportedBridgeSet;
-    }
 
     private InternalData wrapBridgeInvoker(BridgeInvoker bridgeInvoker) {
         InternalData internalData = new InternalData(System.currentTimeMillis(),

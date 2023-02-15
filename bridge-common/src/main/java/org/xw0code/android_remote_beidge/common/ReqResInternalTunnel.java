@@ -24,13 +24,21 @@ public abstract class ReqResInternalTunnel {
     public <T> InternalReqCompletableFuture<T> req(Object o, int regType, Class<T> resClass) {
         InternalReqCompletableFuture<T> future = new InternalReqCompletableFuture<>(resClass);
         long id = IdGenerator.nextId();
+        internalReqFutureMap.put(id, future);
+        future.whenComplete(((t, throwable) -> {
+            LogUtils.info("req complete: " + id);
+            internalReqFutureMap.remove(id);
+        }));
+        if (!channel.isActive()) {
+            future.completeExceptionally(new RuntimeException("channel is not active"));
+            return future;
+        }
         byte[] data = ProtostuffUtil.serializer(o);
         int totalLen = data.length + 4;
         byte[] payload = new byte[totalLen];
         System.arraycopy(ByteUtils.fromInt(regType), 0, payload, 0, 4);
         System.arraycopy(data, 0, payload, 4, data.length);
         InternalData internalData = new InternalData(id, InternalData.INTERNAL_REQ, payload);
-        internalReqFutureMap.put(id, future);
         channel.writeAndFlush(internalData).addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture channelFuture) throws Exception {
@@ -40,10 +48,6 @@ public abstract class ReqResInternalTunnel {
                 }
             }
         });
-        future.whenComplete(((t, throwable) -> {
-            LogUtils.info("req complete: " + id);
-            internalReqFutureMap.remove(id);
-        }));
         return future;
     }
 
@@ -56,6 +60,10 @@ public abstract class ReqResInternalTunnel {
     }
 
     public void cmd(int cmdType, Object o) {
+        if (!channel.isActive()) {
+            LogUtils.info("channel is not active");
+            return;
+        }
         byte[] data = ProtostuffUtil.serializer(o);
         byte[] payload = new byte[4 + data.length];
         System.arraycopy(ByteUtils.fromInt(cmdType), 0, payload, 0, 4);

@@ -45,7 +45,7 @@ public class ServerBridgeBoostrap extends CommonBoostrap
 
     @Override
     public synchronized IServerBridgeBootstrap registerBridge(Class<?> bridgeClass) {
-        this.serverBridge.registerBridge(bridgeClass);
+        SupportBridgeClientManagerContainer.getInstance().registerBridge(bridgeClass);
         return this;
     }
 
@@ -95,7 +95,7 @@ public class ServerBridgeBoostrap extends CommonBoostrap
                             }
                             p.addLast("encoder", new InternalEncoder(internalProtocol));
                             p.addLast("decoder", new InternalDecoder(internalProtocol));
-                            p.addLast(new ServerInvokeHandler(serverBridge));
+                            p.addLast(new ServerInvokeHandler(client));
                             p.addLast(new IdleStateHandler(0, 0, 30));
                             InternalCmdHandler internalCmdHandler = new InternalCmdHandler(cmdHandlers);
                             internalCmdHandler.addAttribute("client", client);
